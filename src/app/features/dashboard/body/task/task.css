@@ -1,0 +1,9 @@
+.task {
+    width: auto;
+    height: 30vh;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    background-color: rgb(164, 121, 121);
+}
