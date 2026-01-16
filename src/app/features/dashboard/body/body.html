@@ -1,0 +1,26 @@
+<div class="container to-do">
+    <label class="container-label">To do</label>
+    <div class="container-tasks">
+        @for (task of toDoTasks; track task) {
+            <app-task [task]="task" ></app-task>
+        }
+    </div>
+</div>
+
+<div class="container in-progress">
+    <label class="container-label">In progress</label>
+     <div class="container-tasks">
+        @for (task of inProgressTasks; track task) {
+            <app-task [task]="task" ></app-task>
+        }
+    </div>
+</div>
+
+<div class="container done">
+    <label class="container-label">Done</label>
+     <div class="container-tasks">
+        @for (task of doneTasks; track task) {
+            <app-task [task]="task" ></app-task>
+        }
+    </div>
+</div>

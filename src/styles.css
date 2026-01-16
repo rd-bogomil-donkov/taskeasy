@@ -8,8 +8,8 @@ body {
 
 .page-grid {
     display: grid;
-    grid-template-rows: auto 1fr auto; /* fraction unit - divides leftover space */
-    min-height: 100vh; /* viewport height */
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
     grid-template-areas:
         "header"
         "content";
