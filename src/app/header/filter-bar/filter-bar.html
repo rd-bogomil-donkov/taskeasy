@@ -1,0 +1,56 @@
+<div class="filters">
+    <mat-form-field class="filter">
+        <mat-label>Person</mat-label>
+        <mat-select [formControl]="personFilter" multiple>
+            <mat-select-trigger>
+                {{personFilter.value?.[0] || ''}}
+                @if ((personFilter.value?.length || 0) > 1) {
+                <span class="filter-person">
+                    (+{{(personFilter.value?.length || 0) - 1}} {{personFilter.value?.length === 2 ? 'other' :
+                    'others'}})
+                </span>
+                }
+            </mat-select-trigger>
+            @for (person of personList; track person) {
+            <mat-option [value]="person">{{person}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="filter">
+        <mat-label>Project</mat-label>
+        <mat-select [formControl]="projectFilter" multiple>
+            <mat-select-trigger>
+                {{projectFilter.value?.[0] || ''}}
+                @if ((projectFilter.value?.length || 0) > 1) {
+                <span class="filter-project">
+                    (+{{(projectFilter.value?.length || 0) - 1}} {{projectFilter.value?.length === 2 ? 'other' :
+                    'others'}})
+                </span>
+                }
+            </mat-select-trigger>
+            @for (project of projectList; track project) {
+            <mat-option [value]="project">{{project}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="filter">
+        <mat-label>State</mat-label>
+        <mat-select [formControl]="stateFilter" multiple>
+            <mat-select-trigger>
+                {{stateFilter.value?.[0] || ''}}
+                @if ((stateFilter.value?.length || 0) > 1) {
+                <span class="filter-state">
+                    (+{{(stateFilter.value?.length || 0) - 1}} {{stateFilter.value?.length === 2 ? 'other' :
+                    'others'}})
+                </span>
+                }
+            </mat-select-trigger>
+            @for (state of stateList; track state) {
+            <mat-option [value]="state">{{state}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</div>
