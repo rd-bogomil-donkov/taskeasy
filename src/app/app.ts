@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
-import { Header } from "./features/dashboard/header/header";
-import { Body } from './features/dashboard/body/body';
+import { Component } from '@angular/core';
+import { Header } from "./features/dashboard/layout/header/header";
+import { Body } from './features/dashboard/layout/body/body';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { Body } from './features/dashboard/body/body';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('taskeasy');
+
 }

@@ -1,0 +1,40 @@
+<div class="container to-do" cdkDropList id="toDoList" [cdkDropListData]="toDoTasks()"
+    [cdkDropListConnectedTo]="['inProgressList', 'doneList']" (cdkDropListDropped)="drop($event)">
+    <label class="container-label">To do</label>
+    <div class="container-tasks">
+        @for(task of toDoTasks(); track task){
+        <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
+            (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
+        }
+    </div>
+</div>
+
+<div class="container in-progress" cdkDropList id="inProgressList" [cdkDropListData]="inProgressTasks()"
+    [cdkDropListConnectedTo]="['toDoList', 'doneList']" (cdkDropListDropped)="drop($event)">
+    <label class="container-label">In Progress</label>
+    <div class="container-tasks">
+        @for(task of inProgressTasks(); track task){
+        <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
+            (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
+        }
+    </div>
+</div>
+
+<div class="container done" cdkDropList id="doneList" [cdkDropListData]="doneTasks()"
+    [cdkDropListConnectedTo]="['toDoList', 'inProgressList']" (cdkDropListDropped)="drop($event)">
+    <label class="container-label">Done</label>
+    <div class="container-tasks">
+        @for(task of doneTasks(); track task){
+        <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
+            (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
+        }
+    </div>
+</div>
+
+<!--Context Menu-->
+<ng-template #inner>
+    <div class="context-menu" cdkMenu>
+        <button class="context-menu-item" cdkMenuItem (click)="onEdit()">Edit</button>
+        <button class="context-menu-item" cdkMenuItem (click)="onDelete()">Delete</button>
+    </div>
+</ng-template>

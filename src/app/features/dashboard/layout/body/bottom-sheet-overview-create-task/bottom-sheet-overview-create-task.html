@@ -1,0 +1,28 @@
+<mat-nav-list>
+    <mat-form-field appearance="outline">
+        <mat-label>Project</mat-label>
+        <input matInput [(ngModel)]="project">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Assignee</mat-label>
+        <input matInput [(ngModel)]="assignee">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+        <mat-label>Estimation</mat-label>
+        <input matInput [(ngModel)]="estimation">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="description-text-area">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="description" ></textarea>
+    </mat-form-field>
+
+    <section>
+        <div>
+            <button matButton="outlined" (click)="onCreate()">Create</button>
+        </div>
+    </section>
+</mat-nav-list>
