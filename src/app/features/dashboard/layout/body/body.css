@@ -1,0 +1,85 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "to-do in-progress done";
+  gap: 1.6rem;
+  padding: 1rem;
+}
+
+.to-do {
+  grid-area: to-do;
+}
+
+.in-progress {
+  grid-area: in-progress;
+}
+
+.done {
+  grid-area: done;
+}
+
+.container {
+  background-color: #878585;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+}
+
+.container-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #545252;
+  height: 2rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  flex-shrink: 0;
+}
+
+.container-tasks {
+  overflow-y: auto;
+  height: 73vh;
+  border-radius: 1rem;
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cdk-drag-placeholder {
+  background: #ddd;
+  border-radius: 5px;
+}
+
+.context-menu {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-width: 280px;
+  background-color: rgb(255, 255, 255);
+  padding: 6px 0;
+}
+
+.context-menu-item {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+
+  user-select: none;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+}
+
+.context-menu-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.context-menu-item:active {
+  background-color: rgb(170, 170, 170);
+}

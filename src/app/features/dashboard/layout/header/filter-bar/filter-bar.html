@@ -37,7 +37,7 @@
 
 
     <mat-form-field class="filter">
-        <mat-label>State</mat-label>
+        <mat-label>Estimation</mat-label>
         <mat-select [formControl]="stateFilter" multiple>
             <mat-select-trigger>
                 {{stateFilter.value?.[0] || ''}}
@@ -48,8 +48,8 @@
                 </span>
                 }
             </mat-select-trigger>
-            @for (state of stateList; track state) {
-            <mat-option [value]="state">{{state}}</mat-option>
+            @for (storyPoint of estimations; track storyPoint) {
+            <mat-option [value]="storyPoint">{{storyPoint}}</mat-option>
             }
         </mat-select>
     </mat-form-field>

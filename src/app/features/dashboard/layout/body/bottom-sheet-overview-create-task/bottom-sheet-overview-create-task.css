@@ -1,0 +1,16 @@
+mat-nav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-select {
+  width: 100%;
+}
+
+.assignee-select {
+  width: 100%;
+}
+
+.description-text-area {
+  width: 100%;
+}
