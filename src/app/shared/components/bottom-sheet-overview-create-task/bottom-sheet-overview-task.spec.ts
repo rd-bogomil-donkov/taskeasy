@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BottomSheetOverviewCreateTask } from './bottom-sheet-overview-create-task';
+import { BottomSheetOverviewTask } from './bottom-sheet-overview-task';
 
 describe('BottomSheetOverviewCreateTask', () => {
-  let component: BottomSheetOverviewCreateTask;
-  let fixture: ComponentFixture<BottomSheetOverviewCreateTask>;
+  let component: BottomSheetOverviewTask;
+  let fixture: ComponentFixture<BottomSheetOverviewTask>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BottomSheetOverviewCreateTask]
+      imports: [BottomSheetOverviewTask]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BottomSheetOverviewCreateTask);
+    fixture = TestBed.createComponent(BottomSheetOverviewTask);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

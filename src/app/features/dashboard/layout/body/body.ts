@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, signal, viewChild } from '@angular/core';
 import { Task } from '../../task/task';
 import { TaskService } from '../../task/task.service';
 import { ITask } from '../../task/task.model';
@@ -6,7 +6,8 @@ import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from 
 import { CdkMenu, CdkMenuItem, CdkContextMenuTrigger } from '@angular/cdk/menu';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { EditDialog } from './edit-dialog/edit-dialog';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetOverviewTask } from '../../../../shared/components/bottom-sheet-overview-create-task/bottom-sheet-overview-task';
 
 @Component({
   selector: 'app-body',
@@ -18,6 +19,7 @@ export class Body {
   taskService = inject(TaskService)
   readonly menuTrigger = viewChild.required(MatMenuTrigger);
   readonly dialog = inject(MatDialog);
+  private _bottomSheet = inject(MatBottomSheet);
 
   toDoTasks = computed(() => this.taskService.tasks().filter(task => task.status === 'todo'));
   inProgressTasks = computed(() => this.taskService.tasks().filter(task => task.status === 'in-progress'));
@@ -54,7 +56,9 @@ export class Body {
   }
 
   onEdit() {
-    console.log(this.selectedTask())
+    this._bottomSheet.open(BottomSheetOverviewTask,{
+      data: this.selectedTask()
+    });
   }
 
   onDelete() {

@@ -1,28 +1,29 @@
 <mat-nav-list>
+    <mat-label>{{contextLabel}} Task</mat-label>
+    <p></p>
     <mat-form-field appearance="outline">
         <mat-label>Project</mat-label>
-        <input matInput [(ngModel)]="project">
+        <input matInput [(ngModel)]="task.project">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Assignee</mat-label>
-        <input matInput [(ngModel)]="assignee">
+        <input matInput [(ngModel)]="task.assignee">
     </mat-form-field>
-
 
     <mat-form-field appearance="outline">
         <mat-label>Estimation</mat-label>
-        <input matInput [(ngModel)]="estimation">
+        <input matInput [(ngModel)]="task.estimation">
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="description-text-area">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="description" ></textarea>
+        <textarea matInput [(ngModel)]="task.description" ></textarea>
     </mat-form-field>
 
     <section>
         <div>
-            <button matButton="outlined" (click)="onCreate()">Create</button>
+            <button matButton="outlined" (click)="onButtonClick()">{{contextLabel}}</button>
         </div>
     </section>
 </mat-nav-list>

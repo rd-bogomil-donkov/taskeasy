@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
-import { BottomSheetOverviewCreateTask } from '../../body/bottom-sheet-overview-create-task/bottom-sheet-overview-create-task';
+import { BottomSheetOverviewTask } from '../../../../../shared/components/bottom-sheet-overview-create-task/bottom-sheet-overview-task';
 
 @Component({
   selector: 'app-crud-bar',
@@ -13,6 +13,6 @@ export class CrudBar {
   private _bottomSheet = inject(MatBottomSheet);
 
   openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetOverviewCreateTask);
+    this._bottomSheet.open(BottomSheetOverviewTask);
   }
 }
