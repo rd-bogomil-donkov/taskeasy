@@ -1,23 +1,5 @@
 <div class="filters">
     <mat-form-field class="filter">
-        <mat-label>Person</mat-label>
-        <mat-select [formControl]="personFilter" multiple>
-            <mat-select-trigger>
-                {{personFilter.value?.[0] || ''}}
-                @if ((personFilter.value?.length || 0) > 1) {
-                <span class="filter-person">
-                    (+{{(personFilter.value?.length || 0) - 1}} {{personFilter.value?.length === 2 ? 'other' :
-                    'others'}})
-                </span>
-                }
-            </mat-select-trigger>
-            @for (person of personList; track person) {
-            <mat-option [value]="person">{{person}}</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="filter">
         <mat-label>Project</mat-label>
         <mat-select [formControl]="projectFilter" multiple>
             <mat-select-trigger>
@@ -29,28 +11,50 @@
                 </span>
                 }
             </mat-select-trigger>
-            @for (project of projectList; track project) {
+            @for (project of projects(); track project) {
             <mat-option [value]="project">{{project}}</mat-option>
             }
         </mat-select>
     </mat-form-field>
 
-
     <mat-form-field class="filter">
-        <mat-label>Estimation</mat-label>
-        <mat-select [formControl]="stateFilter" multiple>
+        <mat-label>Person</mat-label>
+        <mat-select [formControl]="assigneeFilter" multiple>
             <mat-select-trigger>
-                {{stateFilter.value?.[0] || ''}}
-                @if ((stateFilter.value?.length || 0) > 1) {
-                <span class="filter-state">
-                    (+{{(stateFilter.value?.length || 0) - 1}} {{stateFilter.value?.length === 2 ? 'other' :
+                {{assigneeFilter.value?.[0] || ''}}
+                @if ((assigneeFilter.value?.length || 0) > 1) {
+                <span class="filter-person">
+                    (+{{(assigneeFilter.value?.length || 0) - 1}} {{assigneeFilter.value?.length === 2 ? 'other' :
                     'others'}})
                 </span>
                 }
             </mat-select-trigger>
-            @for (storyPoint of estimations; track storyPoint) {
+            @for (assignee of assignees(); track assignee) {
+            <mat-option [value]="assignee">{{assignee}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="filter">
+        <mat-label>Estimation</mat-label>
+        <mat-select [formControl]="estimationFilter" multiple>
+            <mat-select-trigger>
+                {{estimationFilter.value?.[0] || ''}}
+                @if ((estimationFilter.value?.length || 0) > 1) {
+                <span class="filter-state">
+                    (+{{(estimationFilter.value?.length || 0) - 1}} {{estimationFilter.value?.length === 2 ? 'other' :
+                    'others'}})
+                </span>
+                }
+            </mat-select-trigger>
+            @for (storyPoint of estimations(); track storyPoint) {
             <mat-option [value]="storyPoint">{{storyPoint}}</mat-option>
             }
         </mat-select>
     </mat-form-field>
+
+    <div>
+        <button matButton="outlined" (click)="onApply()">Apply</button>
+    </div>
+
 </div>
