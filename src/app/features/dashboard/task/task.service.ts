@@ -12,9 +12,22 @@ export class TaskService {
   assignees = computed(() => this.tasks().map(t => t.assignee))
   estimations = computed(() => this.tasks().map(t => t.estimation))
 
+  constructor() {
+    let storedTasks: ITask[] = [];
+
+    if (typeof localStorage !== 'undefined') {
+      const item = localStorage.getItem('tasks');
+      storedTasks = item ? (JSON.parse(item) as ITask[]) : [];
+    }
+
+    this.tasks = signal<ITask[]>(storedTasks);
+    this.filteredTasks.set([...this.tasks()]);
+  }
+
   addTask(task: ITask) {
     this.tasks.update(current => [...current, task]);
     this.filteredTasks.update(current => [...current, task])
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
   removeTask(taskToRemove: ITask | null) {
@@ -26,6 +39,7 @@ export class TaskService {
     this.filteredTasks.update(current => current.filter(task =>
       task !== taskToRemove
     ))
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
   updateTask(updatedTask: ITask) {
@@ -39,6 +53,7 @@ export class TaskService {
         t.id === updatedTask.id ? updatedTask : t
       )
     )
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
   updateTaskStatus(task: ITask | null, status?: 'todo' | 'in-progress' | 'done') {
@@ -55,6 +70,7 @@ export class TaskService {
         t.id === task?.id ? { ...t, status } : t
       )
     )
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
   resetFilters() {
