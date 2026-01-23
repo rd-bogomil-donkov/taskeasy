@@ -16,14 +16,14 @@ import { BottomSheetOverviewTask } from '../../../../shared/components/bottom-sh
   styleUrl: './body.css',
 })
 export class Body {
-  taskService = inject(TaskService)
+  private taskService = inject(TaskService)
+  private _bottomSheet = inject(MatBottomSheet);
   readonly menuTrigger = viewChild.required(MatMenuTrigger);
   readonly dialog = inject(MatDialog);
-  private _bottomSheet = inject(MatBottomSheet);
 
-  toDoTasks = computed(() => this.taskService.tasks().filter(task => task.status === 'todo'));
-  inProgressTasks = computed(() => this.taskService.tasks().filter(task => task.status === 'in-progress'));
-  doneTasks = computed(() => this.taskService.tasks().filter(task => task.status === 'done'));
+  toDoTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'todo'));
+  inProgressTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'in-progress'));
+  doneTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'done'));
 
   selectedTask = signal<ITask | null>(null);
   status?: 'todo' | 'in-progress' | 'done';

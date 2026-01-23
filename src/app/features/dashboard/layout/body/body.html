@@ -2,7 +2,7 @@
     [cdkDropListConnectedTo]="['inProgressList', 'doneList']" (cdkDropListDropped)="drop($event)">
     <label class="container-label">To do</label>
     <div class="container-tasks">
-        @for(task of toDoTasks(); track task){
+        @for(task of toDoTasks(); track task.id){
         <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
             (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
         }
@@ -13,7 +13,7 @@
     [cdkDropListConnectedTo]="['toDoList', 'doneList']" (cdkDropListDropped)="drop($event)">
     <label class="container-label">In Progress</label>
     <div class="container-tasks">
-        @for(task of inProgressTasks(); track task){
+        @for(task of inProgressTasks(); track task.id){
         <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
             (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
         }
@@ -24,7 +24,7 @@
     [cdkDropListConnectedTo]="['toDoList', 'inProgressList']" (cdkDropListDropped)="drop($event)">
     <label class="container-label">Done</label>
     <div class="container-tasks">
-        @for(task of doneTasks(); track task){
+        @for(task of doneTasks(); track task.id){
         <app-task [cdkContextMenuTriggerFor]="inner" (contextmenu)="onSelectTask(task)"
             (cdkDragStarted)="onSelectTask(task)" [task]="task" cdkDrag></app-task>
         }

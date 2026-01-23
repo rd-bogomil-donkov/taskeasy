@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { ITask } from './task.model';
 
 @Injectable({
@@ -7,8 +7,14 @@ import { ITask } from './task.model';
 export class TaskService {
   tasks = signal<ITask[]>([]);
 
+  filteredTasks = signal<ITask[]>([...this.tasks()]);
+  projects = computed(() => this.tasks().map(t => t.project))
+  assignees = computed(() => this.tasks().map(t => t.assignee))
+  estimations = computed(() => this.tasks().map(t => t.estimation))
+
   addTask(task: ITask) {
     this.tasks.update(current => [...current, task]);
+    this.filteredTasks.update(current => [...current, task])
   }
 
   removeTask(taskToRemove: ITask | null) {
@@ -17,11 +23,19 @@ export class TaskService {
         task !== taskToRemove
       )
     );
+    this.filteredTasks.update(current => current.filter(task =>
+      task !== taskToRemove
+    ))
   }
 
   updateTask(updatedTask: ITask) {
     this.tasks.update(tasks =>
       tasks.map(t =>
+        t.id === updatedTask.id ? updatedTask : t
+      )
+    )
+    this.filteredTasks.update(current =>
+      current.map(t =>
         t.id === updatedTask.id ? updatedTask : t
       )
     )
@@ -35,6 +49,29 @@ export class TaskService {
         t.id === task?.id ? { ...t, status } : t
       )
     );
+
+    this.filteredTasks.update(current =>
+      current.map(t =>
+        t.id === task?.id ? { ...t, status } : t
+      )
+    )
+  }
+
+  resetFilters() {
+    this.filteredTasks.set([...this.tasks()]);
+  }
+
+  filterTasks(projectFilterValues: string, assigneeFilterValues: string, estimationFilterValues: string) {
+    this.filteredTasks.set([])
+
+    for (let i = 0; i < projectFilterValues.length; i++)
+      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.project === projectFilterValues[i])])
+
+    for (let i = 0; i < assigneeFilterValues.length; i++)
+      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.assignee === assigneeFilterValues[i])])
+
+    for (let i = 0; i < estimationFilterValues.length; i++)
+      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.estimation.toString() === estimationFilterValues[i])])
   }
 
 }
