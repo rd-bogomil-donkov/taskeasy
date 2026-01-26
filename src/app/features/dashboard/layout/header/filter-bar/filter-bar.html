@@ -47,7 +47,7 @@
                 </span>
                 }
             </mat-select-trigger>
-            @for (storyPoint of estimations(); track storyPoint) {
+            @for (storyPoint of estimations; track storyPoint) {
             <mat-option [value]="storyPoint">{{storyPoint}}</mat-option>
             }
         </mat-select>
