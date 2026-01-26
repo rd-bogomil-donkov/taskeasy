@@ -1,0 +1,13 @@
+<h1>LOGIN</h1>
+<mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="loginUser.name">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="loginUser.password">
+</mat-form-field>
+
+<button (click)="onLogin()">Login</button>
+<button routerLink="/register" >Register</button>

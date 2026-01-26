@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Header } from "./features/dashboard/layout/header/header";
-import { Body } from './features/dashboard/layout/body/body';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Body],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

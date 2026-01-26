@@ -1,16 +1,18 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { ITask } from './task.model';
+import { UserService } from '../../user/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
+  private userService = inject(UserService)
   tasks = signal<ITask[]>([]);
 
   filteredTasks = signal<ITask[]>([...this.tasks()]);
-  projects = computed(() => this.tasks().map(t => t.project))
-  assignees = computed(() => this.tasks().map(t => t.assignee))
-  estimations = computed(() => this.tasks().map(t => t.estimation))
+  readonly projects = computed(() => this.tasks().map(t => t.project))
+  readonly assignees = computed(()=> this.userService.getUsers().map(t => t.name)) 
+  readonly estimations = ["1","2","3","5","8","13","21"]
 
   constructor() {
     let storedTasks: ITask[] = [];
