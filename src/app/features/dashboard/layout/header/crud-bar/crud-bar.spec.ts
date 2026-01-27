@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrudBar } from './crud-bar';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('CrudBar', () => {
   let component: CrudBar;
@@ -8,7 +9,8 @@ describe('CrudBar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CrudBar]
+      imports: [CrudBar],
+      providers: [provideZonelessChangeDetection()],
     })
     .compileComponents();
 

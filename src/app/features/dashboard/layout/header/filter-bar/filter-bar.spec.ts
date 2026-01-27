@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterBar } from './filter-bar';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('FilterBar', () => {
   let component: FilterBar;
@@ -8,7 +9,8 @@ describe('FilterBar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilterBar]
+      imports: [FilterBar],
+      providers: [provideZonelessChangeDetection()],
     })
     .compileComponents();
 

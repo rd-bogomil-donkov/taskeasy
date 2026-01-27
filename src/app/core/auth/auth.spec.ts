@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Auth } from './auth';
+import { provideZonelessChangeDetection } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 describe('Auth', () => {
   let component: Auth;
@@ -8,9 +10,11 @@ describe('Auth', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Auth]
-    })
-    .compileComponents();
+      imports: [Auth],
+      providers: [provideZonelessChangeDetection(),
+      { provide: ActivatedRoute, useValue: {} }
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Auth);
     component = fixture.componentInstance;
