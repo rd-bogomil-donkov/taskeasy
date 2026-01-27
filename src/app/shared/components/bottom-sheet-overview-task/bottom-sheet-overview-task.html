@@ -1,6 +1,7 @@
 <mat-nav-list>
     <mat-label>{{contextLabel}} Task</mat-label>
     <p></p>
+
     <mat-form-field appearance="outline">
         <mat-label>Project</mat-label>
         <input matInput [(ngModel)]="task.project">
@@ -8,17 +9,25 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Assignee</mat-label>
-        <input matInput [(ngModel)]="task.assignee">
+        <mat-select [(value)]="task.assignee">
+            @for (assignee of assignees; track assignee) {
+            <mat-option [value]="assignee">{{assignee}}</mat-option>
+            }
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label>Estimation</mat-label>
-        <input matInput [(ngModel)]="task.estimation">
+        <mat-select [(value)]="task.estimation">
+            @for (storyPoint of estimations; track storyPoint) {
+            <mat-option [value]="storyPoint">{{storyPoint}}</mat-option>
+            }
+        </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="description-text-area">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="task.description" ></textarea>
+        <textarea matInput [(ngModel)]="task.description"></textarea>
     </mat-form-field>
 
     <section>

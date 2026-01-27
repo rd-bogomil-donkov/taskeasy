@@ -1,17 +1,17 @@
 <h1>REGISTER</h1>
 <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="registerUser.name">
+    <input matInput [(ngModel)]="user.name">
 </mat-form-field>
 
 <mat-form-field appearance="outline">
     <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="registerUser.password">
+    <input type="password" matInput [(ngModel)]="user.password">
 </mat-form-field>
 
 <mat-form-field appearance="outline">
     <mat-label>Repeat Password</mat-label>
-    <input matInput [(ngModel)]="repeatPassword">
+    <input type="password" matInput [(ngModel)]="repeatPassword">
 </mat-form-field>
 
 <button (click)="onRegister()" >Register</button>

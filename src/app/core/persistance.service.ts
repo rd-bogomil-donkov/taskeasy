@@ -1,14 +1,14 @@
 import { Injectable, signal } from '@angular/core';
-import { IUser } from '../features/user/user.model';
 import { ITask } from '../features/dashboard/task/task.model';
+import { IUser } from './user/user.model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PersistanceService {
-    private users = signal<IUser[]>([])
-    private tasks = signal<ITask[]>([])
-    private logInState = signal<boolean>(false)
+    private readonly users = signal<IUser[]>([])
+    private readonly tasks = signal<ITask[]>([])
+    private readonly logInState = signal<boolean>(false)
 
     constructor() {
         if (typeof localStorage !== 'undefined') {

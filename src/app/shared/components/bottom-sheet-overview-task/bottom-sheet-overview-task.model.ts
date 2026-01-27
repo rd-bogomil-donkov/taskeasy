@@ -1,8 +1,6 @@
-export interface ITask {
-    id: string;
+interface IBottomSheetOverviewTask {
     project: string;
     assignee: string;
     estimation: string;
     description: string;
-    status: 'todo' | 'in-progress' | 'done';
 }
