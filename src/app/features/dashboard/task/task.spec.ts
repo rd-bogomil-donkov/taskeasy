@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Task } from './task';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Task', () => {
   let component: Task;
@@ -8,13 +9,13 @@ describe('Task', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Task]
-    })
-    .compileComponents();
+      imports: [Task],
+      providers: [provideZonelessChangeDetection()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Task);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
   });
 
   it('should create', () => {
