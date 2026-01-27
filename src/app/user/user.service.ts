@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { IUser } from './user.model';
-import { PersistanceService } from '../../core/persistance.service';
+import { IUser } from '../core/user/user.model';
+import { PersistanceService } from '../core/persistance.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,18 +1,18 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { ITask } from './task.model';
-import { UserService } from '../../user/user.service';
+import { UserService } from '../../../core/user/user.service';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private userService = inject(UserService)
-  tasks = signal<ITask[]>([]);
-
-  filteredTasks = signal<ITask[]>([...this.tasks()]);
+  private readonly userService = inject(UserService)
   readonly projects = computed(() => this.tasks().map(t => t.project))
-  readonly assignees = computed(()=> this.userService.getUsers().map(t => t.name)) 
-  readonly estimations = ["1","2","3","5","8","13","21"]
+  readonly assignees = computed(() => this.userService.getUsers().map(t => t.name))
+  readonly estimations = ['1', '2', '3', '5', '8', '13', '21']
+  tasks = signal<ITask[]>([]);
+  filteredTasks = signal<ITask[]>([...this.tasks()]);
 
   constructor() {
     let storedTasks: ITask[] = [];
@@ -80,16 +80,12 @@ export class TaskService {
   }
 
   filterTasks(projectFilterValues: string, assigneeFilterValues: string, estimationFilterValues: string) {
-    this.filteredTasks.set([])
+    const filtered = this.tasks().filter(t =>
+      (projectFilterValues.length === 0 || projectFilterValues.includes(t.project)) &&
+      (assigneeFilterValues.length === 0 || assigneeFilterValues.includes(t.assignee)) &&
+      (estimationFilterValues.length === 0 || estimationFilterValues.includes(t.estimation.toString()))
+    );
 
-    for (let i = 0; i < projectFilterValues.length; i++)
-      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.project === projectFilterValues[i])])
-
-    for (let i = 0; i < assigneeFilterValues.length; i++)
-      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.assignee === assigneeFilterValues[i])])
-
-    for (let i = 0; i < estimationFilterValues.length; i++)
-      this.filteredTasks.update(current => [...current, ...this.tasks().filter(t => t.estimation.toString() === estimationFilterValues[i])])
+    this.filteredTasks.set(filtered);
   }
-
 }

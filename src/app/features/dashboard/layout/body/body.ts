@@ -7,7 +7,7 @@ import { CdkMenu, CdkMenuItem, CdkContextMenuTrigger } from '@angular/cdk/menu';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { BottomSheetOverviewTask } from '../../../../shared/components/bottom-sheet-overview-create-task/bottom-sheet-overview-task';
+import { BottomSheetOverviewTask } from '../../../../shared/components/bottom-sheet-overview-task/bottom-sheet-overview-task';
 
 @Component({
   selector: 'app-body',
@@ -16,21 +16,20 @@ import { BottomSheetOverviewTask } from '../../../../shared/components/bottom-sh
   styleUrl: './body.css',
 })
 export class Body {
-  private taskService = inject(TaskService)
-  private _bottomSheet = inject(MatBottomSheet);
+  private readonly taskService = inject(TaskService)
+  private readonly _bottomSheet = inject(MatBottomSheet);
   readonly menuTrigger = viewChild.required(MatMenuTrigger);
   readonly dialog = inject(MatDialog);
 
-  toDoTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'todo'));
-  inProgressTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'in-progress'));
-  doneTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'done'));
+  readonly toDoTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'todo'));
+  readonly inProgressTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'in-progress'));
+  readonly doneTasks = computed(() => this.taskService.filteredTasks().filter(task => task.status === 'done'));
 
-  selectedTask = signal<ITask | null>(null);
+  readonly selectedTask = signal<ITask | null>(null);
   status?: 'todo' | 'in-progress' | 'done';
 
   drop(event: CdkDragDrop<ITask[]>) {
     if (event.previousContainer === event.container) {
-      // Reorder inside the same column
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
 

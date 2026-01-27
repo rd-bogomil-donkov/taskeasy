@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,15 +11,17 @@ import { TaskService } from '../../../task/task.service';
   styleUrl: './filter-bar.css',
 })
 export class FilterBar implements OnInit {
-  private taskService = inject(TaskService)
+  private readonly taskService = inject(TaskService)
 
-  projects = this.taskService.projects
-  assignees = this.taskService.assignees
-  estimations = this.taskService.estimations
+  readonly projects = computed(() =>
+    [...new Set(this.taskService.projects())].sort()
+  );
+  readonly assignees = this.taskService.assignees
+  readonly estimations = this.taskService.estimations
 
-  projectFilter = new FormControl('')
-  assigneeFilter = new FormControl('')
-  estimationFilter = new FormControl('')
+  readonly projectFilter = new FormControl('')
+  readonly assigneeFilter = new FormControl('')
+  readonly estimationFilter = new FormControl('')
 
   projectFilterValues: string = ''
   assigneeFilterValues: string = ''
@@ -52,7 +54,7 @@ export class FilterBar implements OnInit {
   }
 
   onApply() {
-    if (!this.projectFilterValues && !this.assigneeFilterValues && this.estimationFilterValues.length==0) {
+    if (!this.projectFilterValues && !this.assigneeFilterValues && this.estimationFilterValues.length == 0) {
       this.taskService.resetFilters()
     } else {
       this.taskService.filterTasks(this.projectFilterValues, this.assigneeFilterValues, this.estimationFilterValues)

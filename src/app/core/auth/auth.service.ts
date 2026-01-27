@@ -5,8 +5,8 @@ import { PersistanceService } from '../persistance.service';
     providedIn: 'root'
 })
 export class AuthService {
-    private persistanceService = inject(PersistanceService)
-    private loggedIn = signal<boolean>(false)
+    private readonly persistanceService = inject(PersistanceService)
+    private readonly loggedIn = signal<boolean>(false)
 
     constructor() {
         this.loggedIn.set(this.persistanceService.getLogInState())
