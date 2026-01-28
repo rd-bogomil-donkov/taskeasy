@@ -52,7 +52,6 @@ export class Body {
 
   onSelectTask(task: ITask) {
     this.selectedTask?.set(task);
-    console.log(this.selectedTask())
   }
 
   onEdit() {
