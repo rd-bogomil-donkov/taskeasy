@@ -1,35 +1,71 @@
 .task {
-    background-color: #fff;
-    padding: 0.75rem 1rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    cursor: grab;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.task:hover {
-    transform: translateY(-0.0625rem);
-    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.15);
+    gap: 12px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin: 12px auto;
+    word-wrap: break-word;
 }
 
 .task-header {
     display: flex;
     justify-content: space-between;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #1976d2;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #333333;
+}
+
+.task-project {
+    background-color: #e0f0ff;
+    color: #007acc;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.task-estimation {
+    font-size: 0.9rem;
+    color: #007acc;
 }
 
 .task-body {
-    font-size: 0.875rem;
-    color: #333;
+    font-size: 0.95rem;
+    color: #444444;
+}
+
+.task-description {
+    margin: 0;
 }
 
 .task-footer {
-    text-align: right;
-    font-size: 0.8rem;
-    color: #555;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.85rem;
+    color: #777777;
+}
+
+@media (max-width: 480px) {
+    .task {
+        padding: 12px;
+    }
+
+    .task-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .task-estimation {
+        font-size: 0.85rem;
+    }
+
+    .task-footer {
+        justify-content: flex-start;
+    }
 }
