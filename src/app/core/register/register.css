@@ -1,4 +1,3 @@
-/* Page-level centering */
 .container {
     max-width: 420px;
     margin: 80px auto;
@@ -12,7 +11,6 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Title */
 .title {
     margin: 0 0 12px 0;
     text-align: center;
@@ -21,19 +19,16 @@
     letter-spacing: 1px;
 }
 
-/* Ensure Material fields take full width */
 mat-form-field {
     width: 100%;
 }
 
-/* Button container */
 .buttons {
     display: flex;
     gap: 12px;
     margin-top: 16px;
 }
 
-/* Buttons */
 .buttons button {
     flex: 1;
     padding: 10px 0;
@@ -45,7 +40,6 @@ mat-form-field {
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-/* Primary action */
 .buttons button:first-child {
     background-color: #1976d2;
     color: #ffffff;
@@ -55,7 +49,6 @@ mat-form-field {
     background-color: #155fa0;
 }
 
-/* Click feedback */
 .buttons button:active {
     transform: scale(0.98);
 }
