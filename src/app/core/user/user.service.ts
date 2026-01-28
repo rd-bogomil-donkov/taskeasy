@@ -14,7 +14,7 @@ export class UserService {
   }
 
   addUser(user: IUser) {
-    this.users().push(user)
+    this.users.update(current => [...current, user]);
     this.persistanceService.addUser(user)
   }
 
