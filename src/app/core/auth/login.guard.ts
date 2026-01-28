@@ -5,7 +5,7 @@ import { inject, Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class DashboardGuard implements CanActivate {
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
 

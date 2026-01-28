@@ -32,16 +32,25 @@ export class TaskService {
     localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
-  removeTask(taskToRemove: ITask | null) {
+  removeTask(taskToRemove: ITask) {
+    console.log("tasks before :")
+    this.printTasks()
     this.tasks.update(tasks =>
       tasks.filter(task =>
-        task !== taskToRemove
+        task.id !== taskToRemove.id
       )
     );
     this.filteredTasks.update(current => current.filter(task =>
       task !== taskToRemove
     ))
     localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+    console.log("tasks after")
+    this.printTasks()
+  }
+
+  printTasks(){
+    console.log(this.tasks().length)
+    this.tasks().forEach(t=>console.log(t.project))
   }
 
   updateTask(updatedTask: ITask) {

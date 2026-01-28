@@ -9,5 +9,5 @@ import { CrudBar } from "./crud-bar/crud-bar";
   styleUrl: './header.css',
 })
 export class Header {
-
+  
 }

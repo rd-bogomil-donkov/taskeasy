@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Register } from './register';
 import { provideZonelessChangeDetection } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 describe('Register', () => {
   let component: Register;
@@ -10,9 +11,11 @@ describe('Register', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Register],
-      providers: [provideZonelessChangeDetection()],
-    })
-    .compileComponents();
+      providers: [
+        provideZonelessChangeDetection(),
+        { provide: ActivatedRoute, useValue: {} }
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Register);
     component = fixture.componentInstance;

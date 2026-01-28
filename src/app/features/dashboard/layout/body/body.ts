@@ -52,6 +52,7 @@ export class Body {
 
   onSelectTask(task: ITask) {
     this.selectedTask?.set(task);
+    console.log(this.selectedTask())
   }
 
   onEdit() {
@@ -61,6 +62,6 @@ export class Body {
   }
 
   onDelete() {
-    this.taskService.removeTask(this.selectedTask());
+    this.taskService.removeTask(this.selectedTask()!);
   }
 }

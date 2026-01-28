@@ -1,6 +1,14 @@
-<div class = "task" >
-    <p>{{task()?.project}}</p>
-    <p>{{task()?.assignee}}</p>
-    <p>{{task()?.estimation}}</p>
-    <p>{{task()?.description}}</p>
+<div class="task">
+    <div class="task-header">
+        <span class="task-project">{{ task()?.project }}</span>
+        <span class="task-estimation">{{ task()?.estimation }}h</span>
+    </div>
+
+    <div class="task-body">
+        <p class="task-description">{{ task()?.description }}</p>
+    </div>
+
+    <div class="task-footer">
+        <span class="task-assignee">{{ task()?.assignee }}</span>
+    </div>
 </div>

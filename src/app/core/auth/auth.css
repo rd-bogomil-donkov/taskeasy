@@ -1,0 +1,71 @@
+/* Page-level centering */
+.container {
+    max-width: 420px;
+    margin: 80px auto;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.title {
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Ensure Material fields take full width */
+mat-form-field {
+    width: 100%;
+}
+
+/* Button container */
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Buttons */
+.buttons button {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Primary action */
+.buttons button:first-child {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+
+.buttons button:first-child:hover {
+    background-color: #155fa0;
+}
+
+/* Secondary action */
+.buttons button:last-child {
+    background-color: #e0e0e0;
+    color: #333333;
+}
+
+.buttons button:last-child:hover {
+    background-color: #d5d5d5;
+}
+
+/* Click feedback */
+.buttons button:active {
+    transform: scale(0.98);
+}
