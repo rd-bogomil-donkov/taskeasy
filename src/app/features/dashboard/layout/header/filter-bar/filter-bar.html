@@ -1,11 +1,11 @@
-<div class="filters">
+<div class="filter-bar">
     <mat-form-field class="filter">
         <mat-label>Project</mat-label>
         <mat-select [formControl]="projectFilter" multiple>
             <mat-select-trigger>
                 {{projectFilter.value?.[0] || ''}}
                 @if ((projectFilter.value?.length || 0) > 1) {
-                <span class="filter-project">
+                <span class="filter-extra">
                     (+{{(projectFilter.value?.length || 0) - 1}} {{projectFilter.value?.length === 2 ? 'other' :
                     'others'}})
                 </span>
@@ -23,7 +23,7 @@
             <mat-select-trigger>
                 {{assigneeFilter.value?.[0] || ''}}
                 @if ((assigneeFilter.value?.length || 0) > 1) {
-                <span class="filter-person">
+                <span class="filter-extra">
                     (+{{(assigneeFilter.value?.length || 0) - 1}} {{assigneeFilter.value?.length === 2 ? 'other' :
                     'others'}})
                 </span>
@@ -41,7 +41,7 @@
             <mat-select-trigger>
                 {{estimationFilter.value?.[0] || ''}}
                 @if ((estimationFilter.value?.length || 0) > 1) {
-                <span class="filter-state">
+                <span class="filter-extra">
                     (+{{(estimationFilter.value?.length || 0) - 1}} {{estimationFilter.value?.length === 2 ? 'other' :
                     'others'}})
                 </span>

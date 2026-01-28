@@ -1,8 +1,40 @@
-.filters {
-    padding: 5px;
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
 }
 
-.filter {
-    width: 14rem;
-    margin: 0.5rem;
+.filter-bar .filter {
+    min-width: 10rem;
+    max-width: 15rem;
+    flex: 1;
+}
+
+.filter-bar button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    border: 1px solid #1976d2;
+    color: #1976d2;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.filter-extra {
+    color: #1976d2;
+    font-weight: 600;
+    margin-left: 0.25rem;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 48rem) {
+    .filter-bar {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .filter-bar .filter {
+        flex: 1 1 100%;
+    }
 }

@@ -3,6 +3,22 @@ mat-nav-list {
   flex-direction: column;
 }
 
+mat-nav-list button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1976d2;
+  color: #1976d2;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
 .description-text-area {
   width: 100%;
 }

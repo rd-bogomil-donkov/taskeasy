@@ -1,13 +1,18 @@
-<h1>LOGIN</h1>
-<mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="loginUser.name">
-</mat-form-field>
+<div class="container">
+    <h1 class="title">LOGIN</h1>
 
-<mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input type="password" matInput [(ngModel)]="loginUser.password">
-</mat-form-field>
+    <mat-form-field class="input" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="loginUser.name">
+    </mat-form-field>
 
-<button (click)="onLogin()">Login</button>
-<button routerLink="/register" >Register</button>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [(ngModel)]="loginUser.password">
+    </mat-form-field>
+
+    <div class="buttons">
+        <button (click)="onLogin()">Login</button>
+        <button routerLink="/register">Register</button>
+    </div>
+</div>

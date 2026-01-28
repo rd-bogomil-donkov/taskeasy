@@ -32,12 +32,13 @@ export class TaskService {
     localStorage.setItem('tasks', JSON.stringify(this.tasks()));
   }
 
-  removeTask(taskToRemove: ITask | null) {
+  removeTask(taskToRemove: ITask) {
     this.tasks.update(tasks =>
       tasks.filter(task =>
-        task !== taskToRemove
+        task.id !== taskToRemove.id
       )
     );
+
     this.filteredTasks.update(current => current.filter(task =>
       task !== taskToRemove
     ))

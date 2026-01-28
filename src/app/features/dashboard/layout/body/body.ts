@@ -61,6 +61,6 @@ export class Body {
   }
 
   onDelete() {
-    this.taskService.removeTask(this.selectedTask());
+    this.taskService.removeTask(this.selectedTask()!);
   }
 }
